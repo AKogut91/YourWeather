@@ -10,13 +10,11 @@ import UIKit
 
 class CityLabelTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var city: UILabel!
-    @IBOutlet weak var contry: UILabel!
-    @IBOutlet weak var population: UILabel!
-    @IBOutlet weak var numberOfPopulation: UILabel!
+    @IBOutlet weak var weatherIMage: UIImageView!
+    @IBOutlet weak var weatherDegrees: ProjectLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        self.backgroundColor = .clear
     }
 }

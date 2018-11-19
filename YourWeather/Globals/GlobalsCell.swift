@@ -11,5 +11,9 @@ import Foundation
 struct GlobalsCell {
     
     static let cityLabel = "CityLabel"
+    static let selectCity = "selectCity"
+    static let weatherFor16 = "WeatherFor16Days"
+    static let cityWeatherDetails = "CityWeatherDetails"
+    static let mainWeatherCell = "MainWeatherCell"
 
 }

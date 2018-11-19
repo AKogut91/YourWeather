@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Local-->
+        <!--Local Weather View Controller-->
         <scene sceneID="A4x-AI-KRl">
             <objects>
-                <viewController id="M51-HP-2CV" customClass="LocalWeatherViewController" customModule="YourWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocalWeather" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M51-HP-2CV" customClass="LocalWeatherViewController" customModule="YourWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pcG-mC-yb3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3UW-bp-3fk">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3UW-bp-3fk">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="WGy-oW-yqE">
@@ -34,14 +34,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3UW-bp-3fk" firstAttribute="top" secondItem="IJY-hS-SiA" secondAttribute="top" id="5bG-NL-dzI"/>
-                            <constraint firstItem="IJY-hS-SiA" firstAttribute="bottom" secondItem="3UW-bp-3fk" secondAttribute="bottom" id="Xgy-Vy-ob7"/>
-                            <constraint firstItem="IJY-hS-SiA" firstAttribute="trailing" secondItem="3UW-bp-3fk" secondAttribute="trailing" id="jwM-oY-47C"/>
-                            <constraint firstItem="3UW-bp-3fk" firstAttribute="leading" secondItem="IJY-hS-SiA" secondAttribute="leading" id="zPM-eb-jx4"/>
+                            <constraint firstItem="3UW-bp-3fk" firstAttribute="leading" secondItem="pcG-mC-yb3" secondAttribute="leading" id="1Eo-CI-nlZ"/>
+                            <constraint firstAttribute="trailing" secondItem="3UW-bp-3fk" secondAttribute="trailing" id="KyT-0M-vxB"/>
+                            <constraint firstAttribute="bottom" secondItem="3UW-bp-3fk" secondAttribute="bottom" id="trm-sy-X75"/>
+                            <constraint firstItem="3UW-bp-3fk" firstAttribute="top" secondItem="IJY-hS-SiA" secondAttribute="top" id="yfa-wk-1yc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IJY-hS-SiA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Local" id="j7e-vp-ukN"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="3UW-bp-3fk" id="elg-0V-Rcc"/>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewID" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="YourWeather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="125" height="127"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="125" height="127"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="oKo-7r-E4f">
+                        <rect key="frame" x="16" y="1" width="93" height="69"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQu-5o-kzR" customClass="ProjectLabel" customModule="YourWeather" customModuleProvider="target">
+                        <rect key="frame" x="16" y="72" width="93" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="h8k-5I-Tqa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewj-st-bz5" customClass="ProjectLabel" customModule="YourWeather" customModuleProvider="target">
+                        <rect key="frame" x="16" y="100" width="93" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="Teh-pX-MoH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="oKo-7r-E4f" firstAttribute="leading" secondItem="rQu-5o-kzR" secondAttribute="leading" id="Ant-Em-NaP"/>
+                <constraint firstItem="rQu-5o-kzR" firstAttribute="top" secondItem="oKo-7r-E4f" secondAttribute="bottom" constant="2" id="DPu-5T-okw"/>
+                <constraint firstItem="oKo-7r-E4f" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="EsG-v2-a6L"/>
+                <constraint firstItem="ewj-st-bz5" firstAttribute="top" secondItem="rQu-5o-kzR" secondAttribute="bottom" constant="1" id="LFS-AI-vkf"/>
+                <constraint firstAttribute="bottom" secondItem="ewj-st-bz5" secondAttribute="bottom" id="NP4-3Q-lrV"/>
+                <constraint firstItem="rQu-5o-kzR" firstAttribute="leading" secondItem="ewj-st-bz5" secondAttribute="leading" id="bYB-dl-Ggg"/>
+                <constraint firstItem="oKo-7r-E4f" firstAttribute="trailing" secondItem="rQu-5o-kzR" secondAttribute="trailing" id="fRF-fq-XtA"/>
+                <constraint firstItem="oKo-7r-E4f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="kFb-UG-XOb"/>
+                <constraint firstItem="oKo-7r-E4f" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vlw-dP-gek"/>
+                <constraint firstItem="rQu-5o-kzR" firstAttribute="trailing" secondItem="ewj-st-bz5" secondAttribute="trailing" id="wiz-HK-fWa"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="125" height="127"/>
+            <connections>
+                <outlet property="weatherDate" destination="ewj-st-bz5" id="hSE-a4-tOr"/>
+                <outlet property="weatherDegrees" destination="rQu-5o-kzR" id="DJV-rM-7rb"/>
+                <outlet property="weatherIcon" destination="oKo-7r-E4f" id="tVn-YH-9dR"/>
+            </connections>
+            <point key="canvasLocation" x="15.199999999999999" y="74.212893553223395"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Clear" width="269" height="200"/>
+    </resources>
+</document>

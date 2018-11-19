@@ -16,14 +16,12 @@ class RestAPI {
         case locationWeather
         case cityWeather
         case weatherOf16day
-        case weatherOf5day
 
         var description: String {
             switch self {
             case .locationWeather:   return "\(RestAPI.init().baseUrl)weather"
             case .cityWeather:   return "\(RestAPI.init().baseUrl)weather"
-            case .weatherOf16day: return "\(RestAPI.init().baseUrl)forecast"
-            case .weatherOf5day:    return "\(RestAPI.init().baseUrl)forecast"
+            case .weatherOf16day: return "\(RestAPI.init().baseUrl)forecast/daily"
             }
         }
     }

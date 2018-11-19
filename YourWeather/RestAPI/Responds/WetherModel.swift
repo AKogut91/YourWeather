@@ -26,28 +26,26 @@ class CityCoordinate: HandyJSON {
     required init() {}
 }
 
-class List: HandyJSON {
-    
+class ListFor16Days: HandyJSON {
     var dt:Int!
-    var temp: DayTemperature!
-    var weather: [CurrentWeather]?
+    var humidity: Int!
+    var temp: DayTemperatureFor16Days!
+    var weather: [CurrentWeatherFor16Days]!
     
     required init() {}
-    
 }
 
-class DayTemperature: HandyJSON {
+class DayTemperatureFor16Days: HandyJSON {
     var day: Double!
-    var min: Double!
-    var max: Double!
-    var night: Double!
     var eve: Double!
+    var max: Double!
+    var min: Double!
     var morn: Double!
-    
+    var night: Double!
     required init() {}
 }
 
-class CurrentWeather: HandyJSON {
+class CurrentWeatherFor16Days: HandyJSON {
     var main: String!
     var description: String!
     var icon: String!
@@ -56,8 +54,8 @@ class CurrentWeather: HandyJSON {
 }
 
 class WeatherModel: HandyJSON {
-    var city: CityJSON!
-    var list: [List]!
+   
+    var list: [ListFor16Days]!
     
     required init() {}
 }

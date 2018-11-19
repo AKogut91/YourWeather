@@ -12,29 +12,67 @@ import HandyJSON
 extension LocalWeatherViewController {
     
     enum CellType {
-        case CityLabel, CityWeater
+        case CityLabel, CityWeater, WeatherFor16Days
     }
+}
+
+enum RequestType: String {
+    case cityTitel, cityCoordinate
 }
 
 class LocalWeatherViewController: UIViewController {
     
-    var localModel: LocalWeatherViewModel!
+    private var viewModel: LocalWeatherViewModel!
     @IBOutlet weak var tableView: UITableView!
-    let cellSection: [CellType] = [.CityLabel, .CityWeater]
-    
+    private let cellSection: [CellType] = [.CityLabel, .CityWeater, .WeatherFor16Days]
+    var currentCity = ""
+    var type = ""
+    var coordinate = [String: Any]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        localModel = LocalWeatherViewModel(complition: {
-            self.tableView.reloadData()
-        })
+        view.backgroundColor = UIColor.BackgroundColor.background
         setTable()
+        
+        print(coordinate)
+        
+        switch type {
+        case RequestType.cityTitel.rawValue:
+            return viewModel = LocalWeatherViewModel(city: currentCity, complition: {
+                self.reloadTableView()
+                self.navigationTitel()
+                
+            })
+         
+        case RequestType.cityCoordinate.rawValue:
+            return viewModel = LocalWeatherViewModel(coordinate: coordinate, complition: {
+                self.reloadTableView()
+                self.navigationTitel()
+            })
+            
+        default: print("")
+        }
+        
+    }
+    
+    func navigationTitel() {
+        self.title = self.viewModel.currentCityWeather.name
+    }
+    
+    func reloadTableView() {
+        self.tableView.reloadData()
     }
     
     func setTable() {
+        tableView.isScrollEnabled = false
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "CityLabelTableViewCell", bundle: nil), forCellReuseIdentifier: GlobalsCell.cityLabel)
+        tableView.register(UINib(nibName: "CityTemperatureTableViewCell", bundle: nil), forCellReuseIdentifier: GlobalsCell.weatherFor16)
+        tableView.register(UINib(nibName: "CityWeatherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: GlobalsCell.cityWeatherDetails)
+        
     }
 }
 
@@ -46,11 +84,13 @@ extension LocalWeatherViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let cellItems = cellSection[section]
+        let cells = viewModel.forecastWeather.count == 0 ? 0: 1
         
+        let cellItems = cellSection[section]
         switch cellItems {
-        case .CityLabel: return localModel.weaterTemp.count == 0 ? 0: 1
-        case .CityWeater: return localModel.weaterTemp.count == 0 ? 0: localModel.weaterTemp.count
+        case .CityLabel:return cells
+        case .CityWeater:  return cells
+        case .WeatherFor16Days: return cells
         }
     }
     
@@ -61,16 +101,19 @@ extension LocalWeatherViewController: UITableViewDataSource {
         switch cellItems {
         case .CityLabel:
             let cell = tableView.dequeueReusableCell(withIdentifier: GlobalsCell.cityLabel, for: indexPath) as! CityLabelTableViewCell
-            cell.city.text = localModel.cityInfo.city.name
-            cell.contry.text = localModel.cityInfo.city.country
-            cell.numberOfPopulation.text = String(localModel.cityInfo.city.population)
-            
+            viewModel.configurCell(cell: cell, indexPath: indexPath)
             return cell
             
         case .CityWeater:
+            let cell = tableView.dequeueReusableCell(withIdentifier: GlobalsCell.cityWeatherDetails, for: indexPath) as! CityWeatherDetailsTableViewCell
+            cell.configure(viewModel: viewModel)
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = localModel.weaterTemp[indexPath.row].main
+            return cell
+            
+        case .WeatherFor16Days:
+            let cell = tableView.dequeueReusableCell(withIdentifier: GlobalsCell.weatherFor16, for: indexPath) as! CityTemperatureTableViewCell
+            cell.configure(viewModel: viewModel)
+            
             return cell
         }
     }
@@ -79,12 +122,12 @@ extension LocalWeatherViewController: UITableViewDataSource {
 extension LocalWeatherViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+    
         let cellItems = cellSection[indexPath.section]
-        
         switch cellItems {
-        case .CityLabel: return 140
-        case .CityWeater:return 80
+        case .CityLabel: return GlobalSize.screenHeight / 2.3
+        case .CityWeater:return GlobalSize.screenHeight / 3.5
+        case .WeatherFor16Days:return GlobalSize.screenHeight / 6.13
         }
     }
 }

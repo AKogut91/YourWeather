@@ -20,21 +20,20 @@ class NetworkService {
         }
     }
     
-    /// Get weather data for 5 days with interval 3 hours
-    static func getWeatherInterval5Days(city: String, complition: @escaping (JSONDictionary) -> ()) {
+    /// Get current weather data
+    static func getWeather(city: String, complition: @escaping (JSONDictionary) -> ()) {
         
         let params = Request.params(params: ["q": city])
         
-        Request.apiRequest(link: RestAPI.Methods.weatherOf5day, urlParams: params) { (json) in
+        
+        Request.apiRequest(link: RestAPI.Methods.cityWeather, urlParams: params) { (json) in
             complition(json)
         }
     }
     
     /// Get weather data by coordiantes
-    static func getWeatherByCoordiantes(lon: Double, lat: Double, complition: @escaping (JSONDictionary) -> ()) {
-        
-        let params = Request.params(params: ["lon": lon, "lat": lon])
-        
+    static func getWeatherByCoordiantes(cooridinate: [String: Any], complition: @escaping (JSONDictionary) -> ()) {
+        let params = Request.params(params: cooridinate)
         Request.apiRequest(link: RestAPI.Methods.locationWeather, urlParams: params) { (json) in
             complition(json)
         }

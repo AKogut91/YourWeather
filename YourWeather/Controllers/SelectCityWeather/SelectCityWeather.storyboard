@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select City Weather View Controller-->
+        <scene sceneID="A3r-yF-Dmm">
+            <objects>
+                <viewController storyboardIdentifier="SelectCityWeather" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e2Z-TG-6hC" customClass="SelectCityWeatherViewController" customModule="YourWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I7A-eD-2oA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="udX-oz-c3q">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L90-IY-FCI">
+                                <rect key="frame" x="0.0" y="76" width="375" height="592"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="rsC-dT-3DF">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rsC-dT-3DF" id="jig-EW-Bg9">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L90-IY-FCI" firstAttribute="top" secondItem="udX-oz-c3q" secondAttribute="bottom" id="2ZQ-2h-ibf"/>
+                            <constraint firstItem="udX-oz-c3q" firstAttribute="leading" secondItem="L90-IY-FCI" secondAttribute="leading" id="GXd-GP-FYx"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="L90-IY-FCI" secondAttribute="bottom" constant="-1" id="Icg-Nb-wuc"/>
+                            <constraint firstAttribute="trailing" secondItem="udX-oz-c3q" secondAttribute="trailing" id="WkY-GI-6aA"/>
+                            <constraint firstItem="udX-oz-c3q" firstAttribute="top" secondItem="Bqt-Jb-uLM" secondAttribute="top" id="d7s-Aa-sGW"/>
+                            <constraint firstItem="udX-oz-c3q" firstAttribute="leading" secondItem="I7A-eD-2oA" secondAttribute="leading" id="uAB-l9-8nf"/>
+                            <constraint firstItem="udX-oz-c3q" firstAttribute="trailing" secondItem="L90-IY-FCI" secondAttribute="trailing" id="xmU-Dv-iLc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bqt-Jb-uLM"/>
+                    </view>
+                    <connections>
+                        <outlet property="searhTabBar" destination="udX-oz-c3q" id="Ti2-6Q-soB"/>
+                        <outlet property="tableview" destination="L90-IY-FCI" id="X3e-Dh-BoJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8IO-qg-fHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39.200000000000003" y="-18.440779610194905"/>
+        </scene>
+    </scenes>
+</document>
