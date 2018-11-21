@@ -1,5 +1,5 @@
 //
-//  DataService.swift
+//  DateService.swift
 //  YourWeather
 //
 //  Created by AlexanderKogut on 11/19/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DataService {
+class DateService {
     
     enum KindTime: String {
         case hoursMinut = "h:mm a"

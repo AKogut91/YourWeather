@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-
 extension UIColor {
-    
     
     struct BackgroundColor {
         
@@ -44,3 +42,5 @@ extension UISearchBar {
         textFieldInsideSearchBarLabel?.textColor = color
     }
 }
+
+

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 class LocalWeatherViewModel {
@@ -16,27 +17,29 @@ class LocalWeatherViewModel {
     var currentCityWeather: CurrentCityWeather!
     var currentWeather: [CurrentWeather]!
     
+    
     init(city: String,complition: @escaping () -> ()) {
         NetworkService.getWeather(city: city) { (json) in
-            self.currentCityWeather = CurrentCityWeather.deserialize(from: json)
-            self.currentWeather = self.currentCityWeather.weather
-            self.forecastWeatherRequest(city: self.currentCityWeather.name, complition: {
+            self.parseJSON(json: json, complition: {
                 complition()
             })
-            
         }
     }
     
     init(coordinate: [String: Any],complition: @escaping () -> ()) {
         NetworkService.getWeatherByCoordiantes(cooridinate: coordinate) { (json) in
-            print(json)
-            self.currentCityWeather = CurrentCityWeather.deserialize(from: json)
-            self.currentWeather = self.currentCityWeather.weather
-            self.forecastWeatherRequest(city: self.currentCityWeather.name, complition: {
+            self.parseJSON(json: json, complition: {
                 complition()
             })
-            
         }
+    }
+    
+    func parseJSON(json: JSONDictionary, complition: @escaping () -> ()) {
+        self.currentCityWeather = CurrentCityWeather.deserialize(from: json)
+        self.currentWeather = self.currentCityWeather.weather
+        self.forecastWeatherRequest(city: self.currentCityWeather.name, complition: {
+            complition()
+        })
     }
 }
 
@@ -77,6 +80,47 @@ extension LocalWeatherViewModel {
         let weatherTemp = forecastWeather[indexPath.row]
         cell.weatherIcon.image = UIImage(named: forecastWeatherIcons[indexPath.row].main)
         cell.weatherDegrees.text = DegreesService.convertCelvitToC(celvin: (weatherTemp.temp.max)!)
-        cell.weatherDate.text = DataService.timeStamp(unixTimestamp: weatherTemp.dt, timeFormat: DataService.KindTime.monthDay)
+        cell.weatherDate.text = DateService.timeStamp(unixTimestamp: weatherTemp.dt, timeFormat: DateService.KindTime.monthDay)
+    }
+}
+
+
+//MARK: - DataBase
+extension LocalWeatherViewModel {
+
+    func saveToDataBase(cityTitel: String) {
+        DataBaseService.shered.save(entity: DataBaseService.entity.City) { (managerObj) in
+            let obj = managerObj as! City
+            obj.cityName = cityTitel
+ 
+            do {
+                try DataBaseService.shered.context.save()
+                print("Save to dataBase")
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func removeObjFromDataBase(index: Int) {
+        
+        DataBaseService.shered.remove(entity: DataBaseService.entity.City, index: index) { (managerObj) in
+            
+            let obj = managerObj
+            
+            DataBaseService.shered.context.delete(obj)
+            
+            //DataBaseService.shered.context.delete(managerObj[index])
+            
+            do {
+                try DataBaseService.shered.context.save()
+                print("Remove one city")
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+        
     }
 }

@@ -28,8 +28,8 @@ class CityWeatherDetailsTableViewCell: UITableViewCell {
         if let weather = viewModel.currentCityWeather {
             
             windSpeed.text = String(weather.wind.speed) + " " + "M/s"
-            sunriceTime.text = DataService.timeStamp(unixTimestamp: weather.sys.sunrise, timeFormat: .hoursMinut)
-            sunsetTime.text = DataService.timeStamp(unixTimestamp: weather.sys.sunset, timeFormat: .hoursMinut)
+            sunriceTime.text = DateService.timeStamp(unixTimestamp: weather.sys.sunrise, timeFormat: .hoursMinut)
+            sunsetTime.text = DateService.timeStamp(unixTimestamp: weather.sys.sunset, timeFormat: .hoursMinut)
             
         }
     

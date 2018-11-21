@@ -16,5 +16,4 @@ class ProjectLabel: UILabel {
         self.tintColor = .white
         self.textColor = .white
     }
-
 }

@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 
-typealias JSONDictionary = [String: Any]  
+typealias JSONDictionary = [String: Any]
+
 class Request {
     
     /// Params For Request
