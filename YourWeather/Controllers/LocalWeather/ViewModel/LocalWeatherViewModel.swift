@@ -102,25 +102,8 @@ extension LocalWeatherViewModel {
         }
     }
     
-    func removeObjFromDataBase(index: Int) {
-        
-        DataBaseService.shered.remove(entity: DataBaseService.entity.City, index: index) { (managerObj) in
-            
-            let obj = managerObj
-            
-            DataBaseService.shered.context.delete(obj)
-            
-            //DataBaseService.shered.context.delete(managerObj[index])
-            
-            do {
-                try DataBaseService.shered.context.save()
-                print("Remove one city")
-            } catch {
-                print(error.localizedDescription)
-            }
-            
-        }
-        
-        
+    func removeObjFromDataBase(title: String) {
+        DataBaseService.shered.removeWithPredicate(title: title, predicate: DataBaseService.classPredicate(rawValue: DataBaseService.classPredicate.cityName.rawValue)!)
+
     }
 }

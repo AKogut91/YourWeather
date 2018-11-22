@@ -92,11 +92,9 @@ extension LocalWeatherViewController {
     func setNavigationRightButton() {
         
         if cityName {
-            
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Delete"), style: UIBarButtonItem.Style.done, target: self, action: #selector(removeCityToDB))
             
         } else {
-            
              self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addCityToDB))
         }
     }
@@ -110,31 +108,13 @@ extension LocalWeatherViewController {
     
     @objc func addCityToDB() {
         SVProgressHUD.showSuccess(withStatus: "Added")
-        SVProgressHUD.setMinimumDismissTimeInterval(2)
      addedCity = true
      viewModel.saveToDataBase(cityTitel: self.viewModel.currentCityWeather.name)
     }
     
     @objc func removeCityToDB() {
         SVProgressHUD.showSuccess(withStatus: "Removed")
-        SVProgressHUD.setMinimumDismissTimeInterval(2)
-       remove(title: self.viewModel.currentCityWeather.name!)
-    }
-    
-    func remove(title: String) {
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: DataBaseService.entity.City.rawValue)
-        let predicate = NSPredicate(format: "cityName == %@", title)
-        request.predicate = predicate
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-        deleteRequest.resultType = .resultTypeObjectIDs
-        
-        do {
-            // Executes batch
-            try DataBaseService.shered.context.execute(deleteRequest) as? NSBatchDeleteResult
-        } catch {
-            fatalError("Failed to execute request: \(error)")
-        }
+        viewModel.removeObjFromDataBase(title: self.viewModel.currentCityWeather.name!)
     }
 }
 

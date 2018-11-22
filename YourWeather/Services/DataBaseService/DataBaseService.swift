@@ -15,6 +15,10 @@ extension DataBaseService {
     enum entity: String {
         case City
     }
+    
+    enum classPredicate :String  {
+        case cityName
+    }
 }
 
 class DataBaseService {
@@ -46,4 +50,19 @@ class DataBaseService {
         complition(newCity)
     }
     
+    func removeWithPredicate(title: String, predicate: classPredicate) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: DataBaseService.entity.City.rawValue)
+        let predicate = NSPredicate(format: "\(predicate.rawValue) == %@", title)
+        request.predicate = predicate
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        deleteRequest.resultType = .resultTypeObjectIDs
+        
+        do {
+            // Executes batch
+            try DataBaseService.shered.context.execute(deleteRequest) as? NSBatchDeleteResult
+        } catch {
+            fatalError("Failed to execute request: \(error)")
+    
+    }
+    }
 }

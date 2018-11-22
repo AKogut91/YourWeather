@@ -32,17 +32,20 @@ extension MainWeatherViewModel {
     }
     
     /// remove from data base
-    func remove(index: Int) {
-        DataBaseService.shered.remove(entity: DataBaseService.entity.City, index: index) { (managetObj) in
-            
-            DataBaseService.shered.context.delete(self.citys[index] as City)
-            
-            do {
-                try DataBaseService.shered.context.save()
-            } catch {
-                
-            }
+    func removeFromDataBase(title: String) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: DataBaseService.entity.City.rawValue)
+        let predicate = NSPredicate(format: "cityName == %@", title)
+        request.predicate = predicate
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        deleteRequest.resultType = .resultTypeObjectIDs
+        
+        do {
+            // Executes batch
+            try DataBaseService.shered.context.execute(deleteRequest) as? NSBatchDeleteResult
+        } catch {
+            fatalError("Failed to execute request: \(error)")
         }
     }
+    
 }
 

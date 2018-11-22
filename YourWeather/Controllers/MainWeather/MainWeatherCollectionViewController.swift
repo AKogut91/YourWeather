@@ -17,7 +17,7 @@ class MainWeatherCollectionViewController: UICollectionViewController {
     let locationManager = CLLocationManager()
     var coordinate = [String: Any]()
     var seletedIndex = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainWeatherViewModel()
