@@ -37,7 +37,6 @@
 		1189293121A0C78F00FBD12A /* LocalWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189293021A0C78F00FBD12A /* LocalWeatherViewModel.swift */; };
 		1189293321A0C90200FBD12A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189293221A0C90200FBD12A /* Request.swift */; };
 		1189293521A0C98800FBD12A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189293421A0C98800FBD12A /* NetworkService.swift */; };
-		11A22D4821A73E3600769A40 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A22D4721A73E3600769A40 /* DataBaseManager.swift */; };
 		11FD5FD821A3382000495464 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FD5FD721A3382000495464 /* DateService.swift */; };
 		11FD5FDA21A3398B00495464 /* DegreesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FD5FD921A3398B00495464 /* DegreesService.swift */; };
 		11FD5FDE21A34DF400495464 /* CityWeatherDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FD5FDC21A34DF400495464 /* CityWeatherDetailsTableViewCell.swift */; };
@@ -105,7 +104,6 @@
 		1189293021A0C78F00FBD12A /* LocalWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWeatherViewModel.swift; sourceTree = "<group>"; };
 		1189293221A0C90200FBD12A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1189293421A0C98800FBD12A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		11A22D4721A73E3600769A40 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		11FD5FD721A3382000495464 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		11FD5FD921A3398B00495464 /* DegreesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesService.swift; sourceTree = "<group>"; };
 		11FD5FDC21A34DF400495464 /* CityWeatherDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 		1118D44221A02F8900D5D282 /* YourWeather */ = {
 			isa = PBXGroup;
 			children = (
-				11A22D4521A73E1A00769A40 /* Manager */,
 				1118D44721A02F8900D5D282 /* Main.storyboard */,
 				1118D44321A02F8900D5D282 /* AppDelegate.swift */,
 				11FD5FD521A3380500495464 /* Services */,
@@ -386,22 +383,6 @@
 				112B97B721A20F7600DD35E1 /* CollectionViewCell.xib */,
 			);
 			path = CityTemperatureCell;
-			sourceTree = "<group>";
-		};
-		11A22D4521A73E1A00769A40 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				11A22D4621A73E2400769A40 /* DataBaseManager */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		11A22D4621A73E2400769A40 /* DataBaseManager */ = {
-			isa = PBXGroup;
-			children = (
-				11A22D4721A73E3600769A40 /* DataBaseManager.swift */,
-			);
-			path = DataBaseManager;
 			sourceTree = "<group>";
 		};
 		11FD5FD521A3380500495464 /* Services */ = {
@@ -691,7 +672,6 @@
 				11FD5FD821A3382000495464 /* DateService.swift in Sources */,
 				112B97B321A1BCB000DD35E1 /* ProjectLabel.swift in Sources */,
 				1189292821A0A27200FBD12A /* CityLabelTableViewCell.swift in Sources */,
-				11A22D4821A73E3600769A40 /* DataBaseManager.swift in Sources */,
 				1189293321A0C90200FBD12A /* Request.swift in Sources */,
 				112B97A521A185A900DD35E1 /* MainWeatherCollectionViewController.swift in Sources */,
 				1118D47D21A0305700D5D282 /* LocalWeatherViewController.swift in Sources */,
