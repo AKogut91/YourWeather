@@ -108,6 +108,11 @@ extension LocalWeatherViewController {
     
     @objc func addCityToDB() {
         SVProgressHUD.showSuccess(withStatus: "Added")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            SVProgressHUD.dismiss()
+        }
+        
      addedCity = true
      viewModel.saveToDataBase(cityTitel: self.viewModel.currentCityWeather.name)
     }
@@ -115,6 +120,10 @@ extension LocalWeatherViewController {
     @objc func removeCityToDB() {
         SVProgressHUD.showSuccess(withStatus: "Removed")
         viewModel.removeObjFromDataBase(title: self.viewModel.currentCityWeather.name!)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }
 
