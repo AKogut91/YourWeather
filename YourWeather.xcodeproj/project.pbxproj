@@ -214,7 +214,6 @@
 		1118D44221A02F8900D5D282 /* YourWeather */ = {
 			isa = PBXGroup;
 			children = (
-				115E78E221A5F47F00222BD5 /* Manager */,
 				1118D44721A02F8900D5D282 /* Main.storyboard */,
 				1118D44321A02F8900D5D282 /* AppDelegate.swift */,
 				11FD5FD521A3380500495464 /* Services */,
@@ -346,13 +345,6 @@
 				115E78E021A5EAD700222BD5 /* DataBaseService.swift */,
 			);
 			path = DataBaseService;
-			sourceTree = "<group>";
-		};
-		115E78E221A5F47F00222BD5 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		1189292221A094CF00FBD12A /* ViewModel */ = {
