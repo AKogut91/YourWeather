@@ -27,7 +27,6 @@
 		112B97B821A20F7600DD35E1 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B97B621A20F7600DD35E1 /* CollectionViewCell.swift */; };
 		112B97B921A20F7600DD35E1 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 112B97B721A20F7600DD35E1 /* CollectionViewCell.xib */; };
 		115E78E121A5EAD700222BD5 /* DataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115E78E021A5EAD700222BD5 /* DataBaseService.swift */; };
-		115E78E521A5F4B700222BD5 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115E78E421A5F4B700222BD5 /* DataBaseManager.swift */; };
 		115E78E721A609F500222BD5 /* MainWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115E78E621A609F500222BD5 /* MainWeatherViewModel.swift */; };
 		1189291F21A047FE00FBD12A /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189291E21A047FE00FBD12A /* RestAPI.swift */; };
 		1189292121A058D300FBD12A /* WetherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189292021A058D300FBD12A /* WetherModel.swift */; };
@@ -95,7 +94,6 @@
 		112B97B621A20F7600DD35E1 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		112B97B721A20F7600DD35E1 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		115E78E021A5EAD700222BD5 /* DataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseService.swift; sourceTree = "<group>"; };
-		115E78E421A5F4B700222BD5 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		115E78E621A609F500222BD5 /* MainWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherViewModel.swift; sourceTree = "<group>"; };
 		1189291E21A047FE00FBD12A /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		1189292021A058D300FBD12A /* WetherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WetherModel.swift; sourceTree = "<group>"; };
@@ -353,17 +351,8 @@
 		115E78E221A5F47F00222BD5 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				115E78E321A5F48500222BD5 /* DataBaseManager */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		115E78E321A5F48500222BD5 /* DataBaseManager */ = {
-			isa = PBXGroup;
-			children = (
-				115E78E421A5F4B700222BD5 /* DataBaseManager.swift */,
-			);
-			path = DataBaseManager;
 			sourceTree = "<group>";
 		};
 		1189292221A094CF00FBD12A /* ViewModel */ = {
@@ -699,7 +688,6 @@
 				112B97AC21A18CAC00DD35E1 /* SelectCityWeatherViewController.swift in Sources */,
 				11FD5FE221A3638000495464 /* MainWeatherCollectionViewCell.swift in Sources */,
 				115E78E121A5EAD700222BD5 /* DataBaseService.swift in Sources */,
-				115E78E521A5F4B700222BD5 /* DataBaseManager.swift in Sources */,
 				1102D0EF21A0DAE1001A40DB /* GlobalsCell.swift in Sources */,
 				11FD5FDE21A34DF400495464 /* CityWeatherDetailsTableViewCell.swift in Sources */,
 				1118D44421A02F8900D5D282 /* AppDelegate.swift in Sources */,
@@ -881,7 +869,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 44B387YQ4J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = YourWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -901,7 +889,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 44B387YQ4J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = YourWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (

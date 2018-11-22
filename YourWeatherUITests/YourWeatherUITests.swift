@@ -10,6 +10,9 @@ import XCTest
 
 class YourWeatherUITests: XCTestCase {
 
+    let app = XCUIApplication()
+
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -29,6 +32,17 @@ class YourWeatherUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+
     }
 
+    func testNavigationBarsButton() {
+        XCTAssert(app.navigationBars["Cities"].exists)
+        app.navigationBars["Cities"].buttons["Add"].tap()
+       // XCTAssert(app.navigationBars["Select City"].exists)
+        app.navigationBars["Select City"].buttons["Cities"].tap()
+        app.navigationBars.buttons.element(boundBy: 1).tap()
+        
+    }
+    
 }
