@@ -1,7 +1,7 @@
 # YourWeather
 
 Weather for fun!
-MVVM, HandyJSON, Alamofire, CoreData, CoreLocation
+MVVM, HandyJSON, Alamofire, CoreData, CoreLocation Unit Testing and UI Testing
 
 
 <a href="https://imgflip.com/gif/2n6q7m"><img src="https://i.imgflip.com/2n6q7m.gif" title="made at imgflip.com"/></a>
