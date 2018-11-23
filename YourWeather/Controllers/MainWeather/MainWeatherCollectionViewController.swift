@@ -87,7 +87,6 @@ class MainWeatherCollectionViewController: UICollectionViewController {
         let storyboard = UIStoryboard(name: "LocalWeather", bundle: nil)
         let newView = storyboard.instantiateViewController(withIdentifier: "LocalWeather") as? LocalWeatherViewController
         newView?.currentCity = city
-        newView?.cityName = true
         newView?.type = RequestType.cityTitel.rawValue
         newView!.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(newView!, animated: true)
