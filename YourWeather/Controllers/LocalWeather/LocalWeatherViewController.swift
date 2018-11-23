@@ -30,7 +30,6 @@ class LocalWeatherViewController: UIViewController {
     var currentCity = ""
     var type = ""
     var coordinate = [String: Any]()
-    var cityName = false
     var addedCity = false
 
     override func viewDidLoad() {
@@ -91,11 +90,15 @@ extension LocalWeatherViewController {
     
     func setNavigationRightButton() {
         
-        if cityName {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Delete"), style: UIBarButtonItem.Style.done, target: self, action: #selector(removeCityToDB))
+        if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+            let viewController = navController.viewControllers[navController.viewControllers.count - 2]
+            NSLog("%@", viewController)
             
-        } else {
-             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addCityToDB))
+            if viewController.isKind(of: SelectCityWeatherViewController.self) {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addCityToDB))
+            } else {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Delete"), style: UIBarButtonItem.Style.done, target: self, action: #selector(removeCityToDB))
+            }
         }
     }
     
