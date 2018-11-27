@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import SVProgressHUD
 import HandyJSON
 
@@ -38,40 +37,32 @@ class LocalWeatherViewController: UIViewController {
         SVProgressHUD.show()
         setNavigationRightButton()
         setTable()
-        print(coordinate)
         
         switch type {
         case RequestType.cityTitel.rawValue:
             return viewModel = LocalWeatherViewModel(city: currentCity, complition: {
-                SVProgressHUD.dismiss()
-                self.reloadTableView()
-                self.navigationTitel()
                 
             })
          
         case RequestType.cityCoordinate.rawValue:
             return viewModel = LocalWeatherViewModel(coordinate: coordinate, complition: {
-                SVProgressHUD.dismiss()
-                self.reloadTableView()
-                self.navigationTitel()
             })
             
         default: print("")
         }
+        
+        self.tableView.reloadData()
+        self.navigationTitel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SVProgressHUD.dismiss()
     }
-    
-    func navigationTitel() {
-        self.title = self.viewModel.currentCityWeather.name
-    }
-    
-    func reloadTableView() {
-        self.tableView.reloadData()
-    }
+}
+
+//MARK: - Table
+extension LocalWeatherViewController {
     
     func setTable() {
         tableView.isScrollEnabled = false
@@ -83,10 +74,15 @@ class LocalWeatherViewController: UIViewController {
         tableView.register(UINib(nibName: "CityTemperatureTableViewCell", bundle: nil), forCellReuseIdentifier: GlobalsCell.weatherFor16)
         tableView.register(UINib(nibName: "CityWeatherDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: GlobalsCell.cityWeatherDetails)
     }
+    
 }
 
-//MARK: - Right Bar Button Item
+//MARK: - Navigation Right Bar Button Item
 extension LocalWeatherViewController {
+    
+    func navigationTitel() {
+        self.title = self.viewModel.currentCityWeather.name
+    }
     
     func setNavigationRightButton() {
         
@@ -153,13 +149,11 @@ extension LocalWeatherViewController: UITableViewDataSource {
         case .CityWeater:
             let cell = tableView.dequeueReusableCell(withIdentifier: GlobalsCell.cityWeatherDetails, for: indexPath) as! CityWeatherDetailsTableViewCell
             cell.configure(viewModel: viewModel)
-            
             return cell
             
         case .WeatherFor16Days:
             let cell = tableView.dequeueReusableCell(withIdentifier: GlobalsCell.weatherFor16, for: indexPath) as! CityTemperatureTableViewCell
             cell.configure(viewModel: viewModel)
-            
             return cell
         }
     }
@@ -171,9 +165,9 @@ extension LocalWeatherViewController: UITableViewDelegate {
     
         let cellItems = cellSection[indexPath.section]
         switch cellItems {
-        case .CityLabel: return 310
-        case .CityWeater:return 166
-        case .WeatherFor16Days:return GlobalSize.screenHeight / 6.13
+        case .CityLabel: return 330
+        case .CityWeater:return 130
+        case .WeatherFor16Days:return 207
         }
     }
 }

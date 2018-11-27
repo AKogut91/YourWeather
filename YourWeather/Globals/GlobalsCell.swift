@@ -15,5 +15,6 @@ struct GlobalsCell {
     static let weatherFor16 = "WeatherFor16Days"
     static let cityWeatherDetails = "CityWeatherDetails"
     static let mainWeatherCell = "MainWeatherCell"
-
+    static let cell = "Cell"
+    static let collectionViewID = "collectionViewID"
 }

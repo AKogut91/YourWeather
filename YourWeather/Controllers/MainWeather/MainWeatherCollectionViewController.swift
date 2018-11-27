@@ -9,8 +9,6 @@
 import UIKit
 import CoreLocation
 
-private let reuseIdentifier = "Cell"
-
 class MainWeatherCollectionViewController: UICollectionViewController {
     
     var viewModel: MainWeatherViewModel!
@@ -27,7 +25,6 @@ class MainWeatherCollectionViewController: UICollectionViewController {
         transparentNavigationBar()
         registerCell()
         layout()
-       // self.collectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,7 +121,7 @@ extension MainWeatherCollectionViewController: CLLocationManagerDelegate {
 extension MainWeatherCollectionViewController {
     
     func registerCell() {
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: GlobalsCell.cell)
     }
     
     /// Layout for 3 Cell
@@ -159,19 +156,13 @@ extension MainWeatherCollectionViewController {
     
 }
 
-
 //MARK: - Localiton Setup
 extension MainWeatherCollectionViewController {
-    
+
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-}
-
-//MARK: - Notification
-extension MainWeatherCollectionViewController {
-
 }

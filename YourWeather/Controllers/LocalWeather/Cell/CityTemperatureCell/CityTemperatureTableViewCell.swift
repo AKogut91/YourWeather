@@ -34,7 +34,7 @@ extension CityTemperatureTableViewCell {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "collectionViewID")
+        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: GlobalsCell.collectionViewID)
         
     }
     
@@ -65,7 +65,7 @@ extension CityTemperatureTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewID", for: indexPath as IndexPath) as! CollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GlobalsCell.collectionViewID, for: indexPath as IndexPath) as! CollectionViewCell
             viewModel.configurCell(cell: cell, indexPath: indexPath)
         return cell
     }
