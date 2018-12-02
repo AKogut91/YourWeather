@@ -43,13 +43,7 @@ class DataBaseService {
         complition(newCity)
     }
     
-    /// Remove object to DataBase
-    func remove(entity: entity, index: Int, complition: @escaping (NSManagedObject) -> ()) {
-        let entity = NSEntityDescription.entity(forEntityName: entity.rawValue, in: context)
-        let newCity = NSManagedObject(entity: entity!, insertInto: context)
-        complition(newCity)
-    }
-    
+    /// Remove object by predicate in DataBase
     func removeWithPredicate(title: String, predicate: classPredicate) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: DataBaseService.entity.City.rawValue)
         let predicate = NSPredicate(format: "\(predicate.rawValue) == %@", title)
@@ -59,7 +53,7 @@ class DataBaseService {
         
         do {
             // Executes batch
-            try DataBaseService.shered.context.execute(deleteRequest) as? NSBatchDeleteResult
+            try! DataBaseService.shered.context.execute(deleteRequest) as? NSBatchDeleteResult
         } catch {
             fatalError("Failed to execute request: \(error)")
     

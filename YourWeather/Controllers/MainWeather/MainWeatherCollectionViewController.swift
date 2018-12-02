@@ -18,11 +18,12 @@ class MainWeatherCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setTranspertBar(titleColor: .white, tinColor: .white)
         viewModel = MainWeatherViewModel()
         setupLocationManager()
         self.title = "Cities"
         setCollection()
-        transparentNavigationBar()
+        
         registerCell()
         layout()
     }
@@ -140,20 +141,6 @@ extension MainWeatherCollectionViewController {
         self.collectionView.setCollectionViewLayout(layout, animated: true)
         
     }
-}
-
-//MARK: - NavigationBar
-extension MainWeatherCollectionViewController {
-    
-    func transparentNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController!.navigationBar.tintColor = UIColor.white
-    }
-    
 }
 
 //MARK: - Localiton Setup

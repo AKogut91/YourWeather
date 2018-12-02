@@ -43,4 +43,15 @@ extension UISearchBar {
     }
 }
 
+extension UINavigationController {
+    
+    func setTranspertBar(titleColor: UIColor, tinColor: UIColor)  {
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.isTranslucent = true
+        self.view.backgroundColor = .clear
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
+        self.navigationBar.tintColor = tinColor
+    }
+}
 

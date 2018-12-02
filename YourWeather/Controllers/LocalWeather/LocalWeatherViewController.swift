@@ -40,19 +40,23 @@ class LocalWeatherViewController: UIViewController {
         
         switch type {
         case RequestType.cityTitel.rawValue:
-            return viewModel = LocalWeatherViewModel(city: currentCity, complition: {
-                
+            return viewModel = LocalWeatherViewModel(city: currentCity, complition: { [weak self] in
+                self?.reloadAndSetNavigation()
             })
          
         case RequestType.cityCoordinate.rawValue:
-            return viewModel = LocalWeatherViewModel(coordinate: coordinate, complition: {
+            return viewModel = LocalWeatherViewModel(coordinate: coordinate, complition: {  [weak self] in
+                self?.reloadAndSetNavigation()
             })
             
         default: print("")
         }
-        
+    }
+    
+    func reloadAndSetNavigation() {
         self.tableView.reloadData()
         self.navigationTitel()
+        SVProgressHUD.dismiss()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
